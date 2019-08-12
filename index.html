@@ -301,18 +301,16 @@
       
         
           
-            <h2 id="jsp-九大内置对象和其作用详解"><a href="#jsp-九大内置对象和其作用详解" class="headerlink" title="jsp 九大内置对象和其作用详解"></a>jsp 九大内置对象和其作用详解</h2><p>   JSP中一共预先定义了9个这样的对象，分别为：request、response、session、application、out、pagecontext、config、page、exception</p>
-<h3 id="1、request对象"><a href="#1、request对象" class="headerlink" title="1、request对象"></a>1、request对象</h3><p>request 对象是 javax.servlet.httpServletRequest类型的对象。 该对象代表了客户端的请求信息，主要用于接受通过HTTP协议传送到服务器的数据。（包括头信息、系统信息、请求方式以及请求参数等）。request对象的作用域为一次请求。</p>
-<h3 id="2、response对象"><a href="#2、response对象" class="headerlink" title="2、response对象"></a>2、response对象</h3><p>response 代表的是对客户端的响应，主要是将JSP容器处理过的对象传回到客户端。response对象也具有作用域，它只在JSP页面内有效。</p>
-<h3 id="3、session对象"><a href="#3、session对象" class="headerlink" title="3、session对象"></a>3、session对象</h3><p>session 对象是由服务器自动创建的与用户请求相关的对象。服务器为每个用户都生成一个session对象，用于保存该用户的信息，跟踪用户的操作状态。session对象内部使用Map类来保存数据，因此保存数据的格式为 “Key/value”。 session对象的value可以使复杂的对象类型，而不仅仅局限于字符串类型。</p>
-<h3 id="4、application对象"><a href="#4、application对象" class="headerlink" title="4、application对象"></a>4、application对象</h3><p> application 对象可将信息保存在服务器中，直到服务器关闭，否则application对象中保存的信息会在整个应用中都有效。与session对象相比，application对象生命周期更长，类似于系统的“全局变量”。</p>
-<h3 id="5、out-对象"><a href="#5、out-对象" class="headerlink" title="5、out 对象"></a>5、out 对象</h3><p>out 对象用于在Web浏览器内输出信息，并且管理应用服务器上的输出缓冲区。在使用 out 对象输出数据时，可以对数据缓冲区进行操作，及时清除缓冲区中的残余数据，为其他的输出让出缓冲空间。待数据输出完毕后，要及时关闭输出流。</p>
-<h3 id="6、pageContext-对象"><a href="#6、pageContext-对象" class="headerlink" title="6、pageContext 对象"></a>6、pageContext 对象</h3><p>pageContext 对象的作用是取得任何范围的参数，通过它可以获取 JSP页面的out、request、reponse、session、application 等对象。pageContext对象的创建和初始化都是由容器来完成的，在JSP页面中可以直接使用 pageContext对象。</p>
-<h3 id="7、config-对象"><a href="#7、config-对象" class="headerlink" title="7、config 对象"></a>7、config 对象</h3><p>config 对象的主要作用是取得服务器的配置信息。通过 pageConext对象的 getServletConfig() 方法可以获取一个config对象。当一个Servlet 初始化时，容器把某些信息通过 config对象传递给这个 Servlet。 开发者可以在web.xml 文件中为应用程序环境中的Servlet程序和JSP页面提供初始化参数。</p>
-<h3 id="8、page-对象"><a href="#8、page-对象" class="headerlink" title="8、page 对象"></a>8、page 对象</h3><p>page 对象代表JSP本身，只有在JSP页面内才是合法的。 page隐含对象本质上包含当前 Servlet接口引用的变量，类似于Java编程中的 this 指针。</p>
-<h3 id="9、exception-对象"><a href="#9、exception-对象" class="headerlink" title="9、exception 对象"></a>9、exception 对象</h3><p>exception 对象的作用是显示异常信息，只有在包含 isErrorPage=”true” 的页面中才可以被使用，在一般的JSP页面中使用该对象将无法编译JSP文件。excepation对象和Java的所有对象一样，都具有系统提供的继承结构。exception 对象几乎定义了所有异常情况。在Java程序中，可以使用try/catch关键字来处理异常情况； 如果在JSP页面中出现没有捕获到的异常，就会生成 exception 对象，并把 exception 对象传送到在page指令中设定的错误页面中，然后在错误页面中处理相应的 exception 对象。</p>
-
-          
+          jsp 九大内置对象和其作用详解   JSP中一共预先定义了9个这样的对象，分别为：request、response、session、application、out、pagecontext、config、page、exception
+1、request对象request 对象是 javax.serv
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/08/jsp内置对象/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -430,41 +428,27 @@
       
         
           
-            <h2 id="容器类"><a href="#容器类" class="headerlink" title="容器类"></a>容器类</h2><ul>
-<li>ArrayList&lt;String&gt; notes = new ArrayList&lt;String&gt;;</li>
-<li>容器类有两个类型<ul>
-<li>容器的类型</li>
-<li>元素的类型</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="几种常见容器"><a href="#几种常见容器" class="headerlink" title="几种常见容器"></a>几种常见容器</h2><ul>
-<li>ArrayList&lt;&gt;数组容器</li>
-<li>HashSet&lt;&gt;集合容器</li>
-<li>HashMap&lt; , &gt;</li>
-</ul>
-<hr>
-<h2 id="向上造型"><a href="#向上造型" class="headerlink" title="向上造型"></a>向上造型</h2><ul>
-<li>拿一个子类的对象，当作父类来用</li>
-<li>把子类类型的对象赋值给父类的变量</li>
-</ul>
-<hr>
-<h2 id="对象的赋值"><a href="#对象的赋值" class="headerlink" title="对象的赋值"></a>对象的赋值</h2><ul>
-<li>Java中不存在对象对对象的赋值，而是让对象的管理者去管理共同的对象</li>
-</ul>
-<h2 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h2><ul>
-<li>与具体相对<ul>
-<li>表示一种概念而非实体</li>
-</ul>
-</li>
-<li>与细节相对<ul>
-<li>表示一定程度上忽略细节而着眼大局</li>
-</ul>
-</li>
-</ul>
+          容器类
+ArrayList&lt;String&gt; notes = new ArrayList&lt;String&gt;;
+容器类有两个类型
+容器的类型
+元素的类型
 
-          
+
+
+
+几种常见容器
+ArrayList&lt;&gt;数组容器
+HashSet&lt;&gt;集合容器
+HashMap&lt;
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/15/我的第一篇博客文章/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -582,21 +566,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/15/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
