@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="Prim算法概览  普里姆算法（Prim算法），图论中的一种算法，可在加权连通图里搜索最小生成树。意即由此算法搜索到的边子集所构成的树中，不但包括了连通图里的所有顶点（英语：Vertex (graph theory)），且其所有边的权值之和亦为最小。该算法于1930年由捷克数学家沃伊捷赫·亚尔尼克（英语：Vojtěch Jarník）发现；并在1957年由美国计算机科学家罗伯特·普里姆（英语：Ro">
 <meta name="keywords" content="汤雪岩">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最小生成树">
 <meta property="og:url" content="http://yoursite.com/2019/09/21/最小生成树/index.html">
 <meta property="og:site_name" content="HungryTang&#39;s Blog">
+<meta property="og:description" content="Prim算法概览  普里姆算法（Prim算法），图论中的一种算法，可在加权连通图里搜索最小生成树。意即由此算法搜索到的边子集所构成的树中，不但包括了连通图里的所有顶点（英语：Vertex (graph theory)），且其所有边的权值之和亦为最小。该算法于1930年由捷克数学家沃伊捷赫·亚尔尼克（英语：Vojtěch Jarník）发现；并在1957年由美国计算机科学家罗伯特·普里姆（英语：Ro">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-21T12:53:15.333Z">
+<meta property="og:updated_time" content="2019-09-21T14:07:34.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最小生成树">
+<meta name="twitter:description" content="Prim算法概览  普里姆算法（Prim算法），图论中的一种算法，可在加权连通图里搜索最小生成树。意即由此算法搜索到的边子集所构成的树中，不但包括了连通图里的所有顶点（英语：Vertex (graph theory)），且其所有边的权值之和亦为最小。该算法于1930年由捷克数学家沃伊捷赫·亚尔尼克（英语：Vojtěch Jarník）发现；并在1957年由美国计算机科学家罗伯特·普里姆（英语：Ro">
 
 
 
@@ -297,7 +300,30 @@
       
 
       
-        
+        <h1 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><blockquote>
+<p> 普里姆算法（Prim算法），图论中的一种算法，可在加权连通图里搜索最小生成树。意即由此算法搜索到的边子集所构成的树中，不但包括了连通图里的所有顶点（英语：Vertex (graph theory)），且其所有边的权值之和亦为最小。该算法于1930年由捷克数学家沃伊捷赫·亚尔尼克（英语：Vojtěch Jarník）发现；并在1957年由美国计算机科学家罗伯特·普里姆（英语：Robert C. Prim）独立发现；1959年，艾兹格·迪科斯彻再次发现了该算法。因此，在某些场合，普里姆算法又被称为DJP算法、亚尔尼克算法或普里姆－亚尔尼克算法。</p>
+</blockquote>
+<h2 id="算法简单描述"><a href="#算法简单描述" class="headerlink" title="算法简单描述"></a>算法简单描述</h2><blockquote>
+<p>1).输入：一个加权连通图，其中顶点集合为V，边集合为E；</p>
+</blockquote>
+<blockquote>
+<p>2).初始化：Vnew = {x}，其中x为集合V中的任一节点（起始点），Enew = {},为空；</p>
+</blockquote>
+<blockquote>
+<p>3).重复下列操作，直到Vnew = V：</p>
+</blockquote>
+<blockquote>
+<p>a.在集合E中选取权值最小的边&lt;u, v&gt;，其中u为集合Vnew中的元素，而v不在Vnew集合当中，并且v∈V（如果存在有多条满足前述条件即具有相同权值的边，则可任意选取其中之一）；</p>
+</blockquote>
+<blockquote>
+<p>b.将v加入集合Vnew中，将&lt;u, v&gt;边加入集合Enew中；</p>
+</blockquote>
+<blockquote>
+<p>4).输出：使用集合Vnew和Enew来描述所得到的最小生成树。</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">#define MAXVEX 20 //图的最大顶点数</span><br><span class="line">#define INFINITY 65535 //表示无穷大</span><br><span class="line">/*定义图的结构体*/</span><br><span class="line">struct MGraph&#123;</span><br><span class="line">    int cost[MAXVEX][MAXVEX]; //两个顶点的边长</span><br><span class="line">    int numVertexes,numEdges;// 图的顶点数和边数</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void createMGraph(MGraph *G)&#123;</span><br><span class="line">    int i,j;</span><br><span class="line">	G-&gt;numEdges=15;</span><br><span class="line">	G-&gt;numVertexes=9;</span><br><span class="line">	/*图的初始化*/</span><br><span class="line">	for(int i = 0;i &lt; G-&gt;numVertexes;i++)&#123;</span><br><span class="line">        for(j = 0;j &lt; G-&gt;numVertexes;j++)&#123;</span><br><span class="line">            if(i == j)</span><br><span class="line">                G-&gt;cost[i][j] = 0;</span><br><span class="line">            else</span><br><span class="line">                G-&gt;cost[i][j] = G-&gt;cost[j][i] = INFINITY;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	G-&gt;cost[0][1]=10;</span><br><span class="line">	G-&gt;cost[0][5]=11;</span><br><span class="line">	G-&gt;cost[1][2]=18;</span><br><span class="line">	G-&gt;cost[1][8]=12;</span><br><span class="line">	G-&gt;cost[1][6]=16;</span><br><span class="line">	G-&gt;cost[2][8]=8;</span><br><span class="line">	G-&gt;cost[2][3]=22;</span><br><span class="line">	G-&gt;cost[3][8]=21;</span><br><span class="line">	G-&gt;cost[3][6]=24;</span><br><span class="line">	G-&gt;cost[3][7]=16;</span><br><span class="line">	G-&gt;cost[3][4]=20;</span><br><span class="line">	G-&gt;cost[4][7]=7;</span><br><span class="line">	G-&gt;cost[4][5]=26;</span><br><span class="line">	G-&gt;cost[5][6]=17;</span><br><span class="line">	G-&gt;cost[6][7]=19;</span><br><span class="line">	for(i = 0; i &lt; G-&gt;numVertexes; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(j = i; j &lt; G-&gt;numVertexes; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			G-&gt;cost[j][i] =G-&gt;cost[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Prim(MGraph G)&#123;</span><br><span class="line">    int min,i,j,k;</span><br><span class="line">    int near[MAXVEX];//near[i]中为顶点i到树中最近顶点的下标</span><br><span class="line">    int lowcost[MAXVEX];//lowcost[i]中为顶点i到树的最小距离</span><br><span class="line">    lowcost[0] = 0;//顶点0放入树中</span><br><span class="line">    near[0] = 0;</span><br><span class="line">    /*初始化其他顶点到顶点0的距离，此时最近的顶点都是0*/</span><br><span class="line">    for(i = 1;i&lt;G.numVertexes;i++)&#123;</span><br><span class="line">        lowcost[i] = G.cost[0][i];</span><br><span class="line">        near[i] = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*遍历所有顶点加入到树中*/</span><br><span class="line">    for(i = 1;i&lt;G.numVertexes;i++)&#123;</span><br><span class="line">        min = INFINITY;</span><br><span class="line">        j = 1;</span><br><span class="line">        k = 0;</span><br><span class="line">        while(j&lt;G.numVertexes)&#123; //找到当前离树最近的顶点</span><br><span class="line">            if(lowcost[j] != 0 &amp;&amp; lowcost[j] &lt; min)&#123;</span><br><span class="line">                min = lowcost[j];</span><br><span class="line">                k = j;//记下当前离树最近的顶点的下标</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;&quot;(&quot;&lt;&lt;near[k]&lt;&lt;&quot;,&quot;&lt;&lt;k&lt;&lt;&quot;)\n&quot;; //输出加入的一条边</span><br><span class="line">        lowcost[k] = 0; //新加入的顶点放到树中</span><br><span class="line">        /*修改near值，因为新加入了顶点*/</span><br><span class="line">        for(j = 1;j&lt;G.numVertexes;j++)&#123;</span><br><span class="line">            if(lowcost[j] != 0 &amp;&amp; lowcost[j] &gt; G.cost[j][k])&#123;</span><br><span class="line">                lowcost[j] = G.cost[j][k];</span><br><span class="line">                near[j] = k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    MGraph G;</span><br><span class="line">    createMGraph(&amp;G);</span><br><span class="line">    Prim(G);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -385,8 +411,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -428,6 +463,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Prim算法"><span class="nav-number">1.</span> <span class="nav-text">Prim算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法简单描述"><span class="nav-number">1.2.</span> <span class="nav-text">算法简单描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
